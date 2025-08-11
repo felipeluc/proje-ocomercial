@@ -1,36 +1,29 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f5f8ff;
-    color: #333;
+    background: #f0f6ff;
 }
 
-/* Menu */
 .menu {
-    background-color: #007aff;
+    background: #0055ff;
     padding: 10px;
     display: flex;
     gap: 10px;
-    justify-content: center;
     position: sticky;
     top: 0;
-    z-index: 1000;
 }
 
 .menu button {
     background: white;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 15px;
+    border-radius: 5px;
     font-weight: bold;
-    border-radius: 8px;
     cursor: pointer;
-    transition: 0.3s;
 }
 
-.menu button.ativo {
-    background: #005bb5;
-    color: white;
+.menu button:hover {
+    background: #e0e0e0;
 }
 
 .tela {
@@ -42,43 +35,33 @@ body {
     display: block;
 }
 
-/* Formulário */
-.form-container {
+.container {
     background: white;
     padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    max-width: 500px;
+    border-radius: 10px;
+    max-width: 700px;
     margin: auto;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 label {
     display: block;
     margin-top: 10px;
-    font-weight: bold;
 }
 
 input, select, button {
     width: 100%;
     padding: 8px;
     margin-top: 5px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    font-size: 16px;
 }
 
 button {
-    background-color: #007aff;
+    background: #0055ff;
     color: white;
     border: none;
-    font-weight: bold;
     margin-top: 15px;
 }
 
 button:hover {
-    background-color: #005bb5;
-}
-
-.resultado {
-    margin-top: 30px;
+    background: #0044cc;
 }
