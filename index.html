@@ -12,12 +12,32 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      overflow: hidden;
+      background-color: white; /* opcional para contraste */
+    }
+
+    .logo-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  </style>
 </head>
 <body>
   <main class="app">
     <header class="topbar">
       <div class="brand">
-        <div class="logo">⚪</div>
+        <div class="logo">
+          <img src="logo.png" alt="Logo" class="logo-img">
+        </div>
         <div>
           <h1>Simulador de Recebimentos</h1>
           <p class="subtitle">Projeção de pagamentos e calendário</p>
