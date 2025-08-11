@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Simulador de Recebimentos — Reunião</title>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">⚪</div>
+        <div>
+          <h1>Simulador de Recebimentos</h1>
+          <p class="subtitle">Use em reuniões — projeção de pagamentos e calendário</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="controls">
+      <div class="card">
+        <label>Valor mensal de vendas (R$)</label>
+        <div class="input-row">
+          <span class="currency">R$</span>
+          <input id="inputValor" type="text" inputmode="numeric" placeholder="0,00" value="10000,00">
+        </div>
+
+        <label>Meses para simular</label>
+        <select id="selectMeses">
+          <!-- options 3..12 -->
+        </select>
+
+        <label>Modelo de recebimento</label>
+        <select id="selectModelo">
+          <option value="parcelado">Parcelado (até 18x) — desconto 5%</option>
+          <option value="antecipado124">Antecipado 12/4 — recebe em 4x — desconto 10%</option>
+          <option value="roupas">Roupas & Calçados Antecipado — 1 pagamento — desconto 10%</option>
+        </select>
+
+        <div id="parcelOptions" class="hidden">
+          <label>Quantidade de parcelas (cliente) — 1 a 18</label>
+          <select id="selectParcelas">
+            <!-- options 1..18 -->
+          </select>
+        </div>
+
+        <div class="actions">
+          <button id="btnSimular" class="btn primary">Simular</button>
+          <button id="btnReset" class="btn ghost">Limpar</button>
+        </div>
+      </div>
+
+      <div class="card summary">
+        <h3>Resumo</h3>
+        <p id="resumoTexto">Preencha os dados e clique em <strong>Simular</strong>.</p>
+        <ul class="quick">
+          <li><strong>Total bruto (período):</strong> <span id="totalBruto">R$ 0,00</span></li>
+          <li><strong>Total líquido (estimado):</strong> <span id="totalLiquido">R$ 0,00</span></li>
+          <li><strong>Primeiro pagamento:</strong> <span id="primeiroPgto">—</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="visuals">
+      <div class="card chart-card">
+        <h3>Projeção de recebimentos (acumulado)</h3>
+        <canvas id="chartRecebimentos"></canvas>
+      </div>
+
+      <div class="card calendar-card">
+        <h3>Calendário de recebimentos</h3>
+        <div id="calendarList" class="calendar-list">
+          <!-- será preenchido -->
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <small>Feito para reuniões de negociação — estilo Apple (azul & branco) • Exportável</small>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
