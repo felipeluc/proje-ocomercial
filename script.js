@@ -1,75 +1,62 @@
-// Trocar telas
-function mostrarTela(id) {
-    document.querySelectorAll('.tela').forEach(t => t.classList.remove('ativa'));
-    document.getElementById(id).classList.add('ativa');
+function mostrarSistema(id) {
+  document.querySelectorAll(".sistema").forEach(div => div.classList.remove("ativo"));
+  document.getElementById(id).classList.add("ativo");
 }
 
-// =======================
-// Sistema 1: Simulador
-// =======================
-function simular() {
-    let valorMensal = parseFloat(document.getElementById("valorMensal").value) || 0;
-    let meses = parseInt(document.getElementById("meses").value);
-    let modelo = document.getElementById("modelo").value;
-    let parcelas = parseInt(document.getElementById("parcelas").value) || 1;
-    let taxa = 0;
+// Sistema 1 - Simulador de Recebimento
+function simularRecebimento() {
+  const valor = parseFloat(document.getElementById("valorVendas").value) || 0;
+  const meses = parseInt(document.getElementById("meses").value);
+  
+  const labels = [];
+  const valores = [];
 
-    if (modelo === "parcelado") taxa = 0.05;
-    if (modelo === "antecipado12x4") taxa = 0.10;
-    if (modelo === "roupasCalcados") taxa = 0.10;
+  for (let i = 1; i <= meses; i++) {
+    labels.push(`Mês ${i}`);
+    valores.push(valor);
+  }
 
-    let recebimentos = [];
-    for (let i = 1; i <= meses; i++) {
-        recebimentos.push((valorMensal * (1 - taxa)).toFixed(2));
+  new Chart(document.getElementById("grafico1"), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: "Recebimentos",
+        data: valores,
+        borderColor: "#007aff",
+        fill: false
+      }]
     }
+  });
 
-    // Gerar gráfico
-    let ctx = document.getElementById("grafico").getContext("2d");
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: Array.from({ length: meses }, (_, i) => `Mês ${i+1}`),
-            datasets: [{
-                label: "Recebimento (R$)",
-                data: recebimentos,
-                borderColor: "#0055ff",
-                fill: false
-            }]
-        }
-    });
-
-    // Gerar calendário
-    let calendario = "<h3>Calendário de Pagamentos</h3><ul>";
-    recebimentos.forEach((v, i) => {
-        calendario += `<li>Mês ${i+1}: R$ ${v}</li>`;
-    });
-    calendario += "</ul>";
-    document.getElementById("calendario").innerHTML = calendario;
+  document.getElementById("calendario1").innerHTML = "<p>Calendário de recebimentos aqui...</p>";
 }
 
-// =======================
-// Sistema 2: Projeção
-// =======================
-function projetar() {
-    let valorInicial = parseFloat(document.getElementById("valorInicial").value) || 0;
-    let meses = parseInt(document.getElementById("mesesProjecao").value);
+// Sistema 2 - Projeção de Vendas
+function simularProjecao() {
+  const valor = parseFloat(document.getElementById("valorMensalProj").value) || 0;
+  const meses = parseInt(document.getElementById("mesesProj").value);
+  
+  const labels = [];
+  const valores = [];
 
-    let valores = [];
-    for (let i = 0; i < meses; i++) {
-        valores.push(valorInicial * (1 + 0.05 * i));
+  for (let i = 1; i <= meses; i++) {
+    labels.push(`Mês ${i}`);
+    valores.push(valor * i); // crescimento acumulado
+  }
+
+  new Chart(document.getElementById("grafico2"), {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [{
+        label: "Projeção de Vendas",
+        data: valores,
+        borderColor: "#007aff",
+        fill: false
+      }]
     }
+  });
 
-    let ctx = document.getElementById("graficoProjecao").getContext("2d");
-    new Chart(ctx, {
-        type: "line",
-        data: {
-            labels: Array.from({ length: meses }, (_, i) => `Mês ${i+1}`),
-            datasets: [{
-                label: "Projeção de Vendas (R$)",
-                data: valores,
-                borderColor: "#00aa00",
-                fill: false
-            }]
-        }
-    });
+  document.getElementById("calendario2").innerHTML = "<p>Calendário de projeção aqui...</p>";
 }
