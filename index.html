@@ -17,7 +17,7 @@
         <div class="logo">⚪</div>
         <div>
           <h1>Simulador de Recebimentos</h1>
-          <p class="subtitle">Use em reuniões — projeção de pagamentos e calendário</p>
+          <p class="subtitle">Projeção de pagamentos e calendário</p>
         </div>
       </div>
     </header>
@@ -31,9 +31,7 @@
         </div>
 
         <label>Meses para simular</label>
-        <select id="selectMeses">
-          <!-- options 3..12 -->
-        </select>
+        <select id="selectMeses"></select>
 
         <label>Modelo de recebimento</label>
         <select id="selectModelo">
@@ -44,9 +42,21 @@
 
         <div id="parcelOptions" class="hidden">
           <label>Quantidade de parcelas (cliente) — 1 a 18</label>
-          <select id="selectParcelas">
-            <!-- options 1..18 -->
-          </select>
+          <select id="selectParcelas"></select>
+        </div>
+
+        <label>Simulação junto ao faturamento próprio do lojista?</label>
+        <select id="selectFaturamentoProprio">
+          <option value="nao">Não</option>
+          <option value="sim">Sim</option>
+        </select>
+
+        <div id="faturamentoProprioCampo" class="hidden">
+          <label>Média mensal de faturamento do lojista (R$)</label>
+          <div class="input-row">
+            <span class="currency">R$</span>
+            <input id="inputFaturamentoProprio" type="text" inputmode="numeric" placeholder="0,00">
+          </div>
         </div>
 
         <div class="actions">
@@ -74,14 +84,12 @@
 
       <div class="card calendar-card">
         <h3>Calendário de recebimentos</h3>
-        <div id="calendarList" class="calendar-list">
-          <!-- será preenchido -->
-        </div>
+        <div id="calendarList" class="calendar-list"></div>
       </div>
     </section>
 
     <footer class="footer">
-      <small>Feito para reuniões de negociação — estilo Apple (azul & branco) • Exportável</small>
+      <small>Feito para reuniões de negociação — estilo Apple</small>
     </footer>
   </main>
 
