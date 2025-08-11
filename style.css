@@ -1,0 +1,126 @@
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+html,body,#root { height: 100%; }
+body {
+  background: linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  color: #0b2546;
+  -webkit-font-smoothing:antialiased;
+  padding: 20px;
+}
+
+/* Layout */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Topbar */
+.topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom: 18px;
+}
+.brand { display:flex; gap:12px; align-items:center; }
+.logo {
+  width:54px; height:54px; border-radius:12px;
+  background: linear-gradient(135deg,#dbe9ff,#b6d3ff);
+  display:flex; align-items:center; justify-content:center;
+  font-size:22px; box-shadow: 0 6px 20px rgba(16,64,150,0.08);
+}
+.brand h1 { font-size:18px; font-weight:600; }
+.subtitle { font-size:13px; color:#5b6b8a; }
+
+/* Controls */
+.controls {
+  display:grid;
+  grid-template-columns: 1fr 360px;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 24px rgba(20,40,80,0.06);
+}
+.card h3 { margin-bottom:10px; color:#08326b; }
+
+/* Inputs */
+label { display:block; font-size:13px; margin-top:10px; color:#2b3b5a; }
+.input-row {
+  display:flex; align-items:center;
+  gap:8px;
+  margin-top:8px;
+}
+.input-row input[type="text"] {
+  flex:1;
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #e6eefb;
+  background: linear-gradient(180deg,#ffffff,#fbfdff);
+  font-size:15px;
+  text-align:right;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+}
+.currency { color:#5b6b8a; font-weight:600; padding-left:6px; }
+
+select {
+  width:100%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #e6eefb;
+  margin-top:8px;
+  background:white;
+}
+
+/* hidden util */
+.hidden { display:none; }
+
+/* Buttons */
+.actions { display:flex; gap:10px; margin-top:14px; }
+.btn {
+  padding:10px 14px; border-radius:10px; border:0; cursor:pointer; font-weight:600;
+  box-shadow: 0 6px 14px rgba(8, 30, 80, 0.06);
+}
+.btn.primary { background: linear-gradient(180deg,#2b7aff,#0b68ff); color:white; }
+.btn.ghost { background:transparent; color:#0b2546; border:1px solid #e6eefb; }
+
+/* Summary */
+.summary p { color:#344565; margin-bottom:10px; }
+.quick { margin-top:12px; list-style:none; }
+.quick li { margin-bottom:8px; font-size:14px; color:#2b3b5a; }
+
+/* Visuals */
+.visuals {
+  display:grid;
+  grid-template-columns: 1fr 420px;
+  gap:18px;
+  margin-bottom:18px;
+}
+.chart-card { padding:12px 16px 18px; }
+.chart-card canvas { width:100% !important; height:320px !important; }
+
+.calendar-list {
+  max-height:420px;
+  overflow:auto;
+  padding:6px;
+}
+.calendar-item {
+  display:flex; justify-content:space-between; gap:8px; align-items:center;
+  padding:10px; border-radius:10px; margin-bottom:8px;
+  background: linear-gradient(180deg,#fbfdff,#f6f9ff);
+  border:1px solid #eef6ff;
+}
+.calendar-item .date { font-weight:700; color:#08326b; }
+.calendar-item .amount { font-weight:700; color:#0646a6; }
+
+/* Footer */
+.footer { text-align:center; color:#6b7a97; font-size:13px; margin-top:8px; }
+
+/* Responsividade */
+@media (max-width: 960px) {
+  .controls { grid-template-columns: 1fr; }
+  .visuals { grid-template-columns: 1fr; }
+  .chart-card canvas { height:260px !important; }
+}
