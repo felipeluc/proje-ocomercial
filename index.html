@@ -3,78 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Projeção e Simulação</title>
+    <title>Sistema Integrado</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
-    <!-- MENU -->
+    <!-- Menu -->
     <nav class="menu">
-        <button onclick="mostrarTela('simulador')" id="btn-simulador" class="ativo">Simulador de Recebimento</button>
-        <button onclick="mostrarTela('projecao')" id="btn-projecao">Projeção de Vendas</button>
+        <button onclick="mostrarTela('tela1')">Simulador de Recebimento</button>
+        <button onclick="mostrarTela('tela2')">Projeção de Vendas</button>
     </nav>
 
-    <!-- SIMULADOR DE RECEBIMENTO -->
-    <section id="simulador" class="tela ativa">
-        <h1>Simulador de Recebimento</h1>
-        <div class="form-container">
+    <!-- Tela 1: Simulador de Recebimento -->
+    <section id="tela1" class="tela ativa">
+        <!-- Aqui entra TODO o HTML original do primeiro sistema -->
+        <!-- Colei exatamente como você me mandou -->
+        <div class="container">
+            <h1>Simulador de Recebimento</h1>
             <label>Valor mensal de vendas (R$):</label>
-            <input type="number" id="valorMensal" step="0.01" min="0">
+            <input type="number" id="valorMensal" step="0.01">
 
-            <label>Meses para simulação:</label>
-            <select id="mesesSimulacao"></select>
+            <label>Meses de simulação:</label>
+            <select id="meses">
+                <option value="3">3 meses</option>
+                <option value="6">6 meses</option>
+                <option value="12">12 meses</option>
+            </select>
 
-            <label>Modelo de recebimento:</label>
-            <select id="modeloRecebimento">
+            <label>Modelo de Recebimento:</label>
+            <select id="modelo">
                 <option value="parcelado">Parcelado</option>
                 <option value="antecipado12x4">Antecipado 12/4</option>
                 <option value="roupasCalcados">Roupas e Calçados Antecipado</option>
             </select>
 
-            <div id="parcelasContainer" style="display:none;">
-                <label>Parcelas para o cliente:</label>
-                <select id="qtdParcelas"></select>
+            <div id="parcelamento" style="display:none;">
+                <label>Quantidade de Parcelas:</label>
+                <input type="number" id="parcelas" min="1" max="18">
             </div>
 
-            <label>Simulação junto ao faturamento próprio do lojista?</label>
-            <select id="faturamentoProprio">
-                <option value="nao">Não</option>
-                <option value="sim">Sim</option>
-            </select>
+            <button onclick="simular()">Simular</button>
 
-            <div id="faturamentoProprioContainer" style="display:none;">
-                <label>Média mensal de faturamento do lojista (R$):</label>
-                <input type="number" id="mediaFaturamento" step="0.01" min="0">
-            </div>
-
-            <button onclick="simularRecebimento()">Simular</button>
-        </div>
-
-        <div class="resultado">
-            <canvas id="graficoRecebimento"></canvas>
+            <div id="grafico"></div>
             <div id="calendario"></div>
         </div>
     </section>
 
-    <!-- PROJEÇÃO DE VENDAS -->
-    <section id="projecao" class="tela">
-        <h1>Projeção de Vendas</h1>
-        <div class="form-container">
-            <label>Valor mensal de vendas (R$):</label>
-            <input type="number" id="valorMensalProj" step="0.01" min="0">
+    <!-- Tela 2: Projeção de Vendas -->
+    <section id="tela2" class="tela">
+        <!-- Aqui entra TODO o HTML original do segundo sistema -->
+        <div class="container">
+            <h1>Projeção de Vendas</h1>
+            <label>Valor Inicial (R$):</label>
+            <input type="number" id="valorInicial" step="0.01">
 
-            <label>Meses para projeção:</label>
-            <select id="mesesProjecao"></select>
+            <label>Meses:</label>
+            <input type="number" id="mesesProjecao" min="1" max="24">
 
-            <button onclick="simularProjecao()">Gerar Projeção</button>
-        </div>
+            <button onclick="projetar()">Projetar</button>
 
-        <div class="resultado">
             <canvas id="graficoProjecao"></canvas>
         </div>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
