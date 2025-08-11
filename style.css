@@ -1,76 +1,84 @@
 body {
-  font-family: Arial, sans-serif;
-  background: #f5f9ff;
-  margin: 0;
-  padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f8ff;
+    color: #333;
 }
 
+/* Menu */
 .menu {
-  display: flex;
-  justify-content: center;
-  background: #007aff;
-  padding: 10px;
+    background-color: #007aff;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
 .menu button {
-  background: white;
-  border: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-weight: bold;
+    background: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-.menu button:hover {
-  background: #e6e6e6;
+.menu button.ativo {
+    background: #005bb5;
+    color: white;
 }
 
-.container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+.tela {
+    display: none;
+    padding: 20px;
 }
 
-h1 {
-  color: #007aff;
+.tela.ativa {
+    display: block;
+}
+
+/* Formulário */
+.form-container {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    max-width: 500px;
+    margin: auto;
 }
 
 label {
-  display: block;
-  margin-top: 10px;
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-input, select {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+input, select, button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
 }
 
 button {
-  background: #007aff;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 6px;
-  border: none;
-  margin-top: 15px;
-  cursor: pointer;
+    background-color: #007aff;
+    color: white;
+    border: none;
+    font-weight: bold;
+    margin-top: 15px;
 }
 
 button:hover {
-  background: #005ecb;
+    background-color: #005bb5;
 }
 
-.grafico-container {
-  margin-top: 20px;
-}
-
-.sistema {
-  display: none;
-}
-
-.sistema.ativo {
-  display: block;
+.resultado {
+    margin-top: 30px;
 }
